@@ -1,0 +1,14 @@
+var github = require('octonode');
+
+function interrogatGithubAPI(){
+    var client = github.client();
+    
+    client.get('/users/hasopi777', {}, function(err, status, body, headers){
+        console.log(body);
+    });
+    let sampleRepo = client.repo('hasopi777/react-sample');
+    sampleRepo.info(function(err, data, headers){
+        console.log("Is this a private repo?" + (data.private ==true ? 'YES' : 'NO'));
+    });
+}
+interrogatGithubAPI();
